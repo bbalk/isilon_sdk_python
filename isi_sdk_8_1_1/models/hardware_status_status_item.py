@@ -207,6 +207,9 @@ class HardwareStatusStatusItem(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(HardwareStatusStatusItem, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

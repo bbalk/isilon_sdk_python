@@ -377,8 +377,8 @@ class SmbSettingsGlobalSettings(object):
             raise ValueError("Invalid value for `guest_user`, length must be less than or equal to `511`")  # noqa: E501
         if guest_user is not None and len(guest_user) < 1:
             raise ValueError("Invalid value for `guest_user`, length must be greater than or equal to `1`")  # noqa: E501
-        if guest_user is not None and not re.search('^$|.', guest_user):  # noqa: E501
-            raise ValueError("Invalid value for `guest_user`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
+        if guest_user is not None and not re.search(r'^$|.', guest_user):  # noqa: E501
+            raise ValueError(r"Invalid value for `guest_user`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
 
         self._guest_user = guest_user
 
@@ -552,8 +552,8 @@ class SmbSettingsGlobalSettings(object):
             raise ValueError("Invalid value for `server_string`, length must be less than or equal to `511`")  # noqa: E501
         if server_string is not None and len(server_string) < 1:
             raise ValueError("Invalid value for `server_string`, length must be greater than or equal to `1`")  # noqa: E501
-        if server_string is not None and not re.search('^$|.', server_string):  # noqa: E501
-            raise ValueError("Invalid value for `server_string`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
+        if server_string is not None and not re.search(r'^$|.', server_string):  # noqa: E501
+            raise ValueError(r"Invalid value for `server_string`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
 
         self._server_string = server_string
 
@@ -747,6 +747,9 @@ class SmbSettingsGlobalSettings(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(SmbSettingsGlobalSettings, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

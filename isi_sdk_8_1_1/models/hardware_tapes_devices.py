@@ -31,14 +31,68 @@ class HardwareTapesDevices(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'media_changers': 'object',
+        'tapes': 'object'
     }
 
     attribute_map = {
+        'media_changers': 'media_changers',
+        'tapes': 'tapes'
     }
 
-    def __init__(self):  # noqa: E501
+    def __init__(self, media_changers=None, tapes=None):  # noqa: E501
         """HardwareTapesDevices - a model defined in Swagger"""  # noqa: E501
+
+        self._media_changers = None
+        self._tapes = None
         self.discriminator = None
+
+        if media_changers is not None:
+            self.media_changers = media_changers
+        if tapes is not None:
+            self.tapes = tapes
+
+    @property
+    def media_changers(self):
+        """Gets the media_changers of this HardwareTapesDevices.  # noqa: E501
+
+
+        :return: The media_changers of this HardwareTapesDevices.  # noqa: E501
+        :rtype: object
+        """
+        return self._media_changers
+
+    @media_changers.setter
+    def media_changers(self, media_changers):
+        """Sets the media_changers of this HardwareTapesDevices.
+
+
+        :param media_changers: The media_changers of this HardwareTapesDevices.  # noqa: E501
+        :type: object
+        """
+
+        self._media_changers = media_changers
+
+    @property
+    def tapes(self):
+        """Gets the tapes of this HardwareTapesDevices.  # noqa: E501
+
+
+        :return: The tapes of this HardwareTapesDevices.  # noqa: E501
+        :rtype: object
+        """
+        return self._tapes
+
+    @tapes.setter
+    def tapes(self, tapes):
+        """Sets the tapes of this HardwareTapesDevices.
+
+
+        :param tapes: The tapes of this HardwareTapesDevices.  # noqa: E501
+        :type: object
+        """
+
+        self._tapes = tapes
 
     def to_dict(self):
         """Returns the model properties as a dict"""
@@ -61,6 +115,9 @@ class HardwareTapesDevices(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(HardwareTapesDevices, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

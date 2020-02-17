@@ -995,6 +995,9 @@ class ProvidersFileIdParams(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ProvidersFileIdParams, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

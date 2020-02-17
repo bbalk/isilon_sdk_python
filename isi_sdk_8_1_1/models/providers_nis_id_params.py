@@ -999,6 +999,9 @@ class ProvidersNisIdParams(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ProvidersNisIdParams, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -119,6 +119,9 @@ class NdmpContextsBreContext(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NdmpContextsBreContext, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

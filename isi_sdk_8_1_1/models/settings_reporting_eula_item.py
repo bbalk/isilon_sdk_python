@@ -119,6 +119,9 @@ class SettingsReportingEulaItem(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(SettingsReportingEulaItem, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -389,6 +389,9 @@ class HdfsSettingsSettings(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(HdfsSettingsSettings, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

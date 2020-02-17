@@ -315,6 +315,9 @@ class SyncJobWorker(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(SyncJobWorker, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

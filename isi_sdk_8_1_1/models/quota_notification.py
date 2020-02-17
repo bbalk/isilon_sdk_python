@@ -231,6 +231,9 @@ class QuotaNotification(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(QuotaNotification, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

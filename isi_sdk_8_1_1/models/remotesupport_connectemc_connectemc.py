@@ -231,6 +231,9 @@ class RemotesupportConnectemcConnectemc(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RemotesupportConnectemcConnectemc, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

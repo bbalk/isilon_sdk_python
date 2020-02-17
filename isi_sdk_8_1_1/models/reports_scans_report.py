@@ -409,6 +409,9 @@ class ReportsScansReport(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ReportsScansReport, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

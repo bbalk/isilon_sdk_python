@@ -483,6 +483,9 @@ class NodePartitionsNodePartitionStatfs(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NodePartitionsNodePartitionStatfs, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -175,6 +175,9 @@ class CloudSettingsSettingsSleepTimeoutCloudGarbageCollection(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CloudSettingsSettingsSleepTimeoutCloudGarbageCollection, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

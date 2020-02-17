@@ -231,6 +231,9 @@ class NodeStateSmartfailExtended(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NodeStateSmartfailExtended, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

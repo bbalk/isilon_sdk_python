@@ -399,6 +399,9 @@ class CloudAccount(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CloudAccount, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

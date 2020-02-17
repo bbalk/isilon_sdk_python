@@ -2298,6 +2298,9 @@ class ProvidersLdapItem(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ProvidersLdapItem, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

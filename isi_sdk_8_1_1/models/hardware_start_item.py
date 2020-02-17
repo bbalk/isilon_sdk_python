@@ -121,6 +121,9 @@ class HardwareStartItem(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(HardwareStartItem, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

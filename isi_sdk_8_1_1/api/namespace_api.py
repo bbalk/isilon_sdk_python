@@ -38,11 +38,11 @@ class NamespaceApi(object):
 
         Recursively copies a directory to a specified destination path. Symbolic links are copied as regular files.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.copy_directory(directory_copy_target, x_isi_ifs_copy_source, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.copy_directory(directory_copy_target, x_isi_ifs_copy_source, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_copy_target: Directory copy destination relative to /. (required)
         :param str x_isi_ifs_copy_source: Specifies the full path to the source directory. (required)
         :param bool overwrite: Deletes and replaces the existing user attributes and ACLs of the directory with user-specified attributes and ACLS from the header, when set to true.
@@ -53,7 +53,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.copy_directory_with_http_info(directory_copy_target, x_isi_ifs_copy_source, **kwargs)  # noqa: E501
         else:
             (data) = self.copy_directory_with_http_info(directory_copy_target, x_isi_ifs_copy_source, **kwargs)  # noqa: E501
@@ -64,11 +64,11 @@ class NamespaceApi(object):
 
         Recursively copies a directory to a specified destination path. Symbolic links are copied as regular files.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.copy_directory_with_http_info(directory_copy_target, x_isi_ifs_copy_source, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.copy_directory_with_http_info(directory_copy_target, x_isi_ifs_copy_source, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_copy_target: Directory copy destination relative to /. (required)
         :param str x_isi_ifs_copy_source: Specifies the full path to the source directory. (required)
         :param bool overwrite: Deletes and replaces the existing user attributes and ACLs of the directory with user-specified attributes and ACLS from the header, when set to true.
@@ -80,7 +80,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_copy_target', 'x_isi_ifs_copy_source', 'overwrite', 'merge', '_continue']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -146,7 +146,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='CopyErrors',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -157,11 +157,11 @@ class NamespaceApi(object):
 
         Copies a file to the specified destination path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.copy_file(file_copy_target, x_isi_ifs_copy_source, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.copy_file(file_copy_target, x_isi_ifs_copy_source, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_copy_target: File copy destination relative to /. (required)
         :param str x_isi_ifs_copy_source: Specifies the full path to the source file. (required)
         :param bool clone: You must set this parameter to true in order to clone a file.
@@ -172,7 +172,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.copy_file_with_http_info(file_copy_target, x_isi_ifs_copy_source, **kwargs)  # noqa: E501
         else:
             (data) = self.copy_file_with_http_info(file_copy_target, x_isi_ifs_copy_source, **kwargs)  # noqa: E501
@@ -183,11 +183,11 @@ class NamespaceApi(object):
 
         Copies a file to the specified destination path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.copy_file_with_http_info(file_copy_target, x_isi_ifs_copy_source, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.copy_file_with_http_info(file_copy_target, x_isi_ifs_copy_source, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_copy_target: File copy destination relative to /. (required)
         :param str x_isi_ifs_copy_source: Specifies the full path to the source file. (required)
         :param bool clone: You must set this parameter to true in order to clone a file.
@@ -199,7 +199,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_copy_target', 'x_isi_ifs_copy_source', 'clone', 'snapshot', 'overwrite']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -265,7 +265,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='CopyErrors',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -276,11 +276,11 @@ class NamespaceApi(object):
 
         Creates a namespace access point in the file system. Only root users can create or change namespace access points.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_access_point(access_point_name, access_point, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_access_point(access_point_name, access_point, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str access_point_name: Access point name. (required)
         :param AccessPointCreateParams access_point: Access point parameters model. (required)
         :return: Empty
@@ -288,7 +288,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_access_point_with_http_info(access_point_name, access_point, **kwargs)  # noqa: E501
         else:
             (data) = self.create_access_point_with_http_info(access_point_name, access_point, **kwargs)  # noqa: E501
@@ -299,11 +299,11 @@ class NamespaceApi(object):
 
         Creates a namespace access point in the file system. Only root users can create or change namespace access points.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_access_point_with_http_info(access_point_name, access_point, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_access_point_with_http_info(access_point_name, access_point, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str access_point_name: Access point name. (required)
         :param AccessPointCreateParams access_point: Access point parameters model. (required)
         :return: Empty
@@ -312,7 +312,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['access_point_name', 'access_point']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -372,7 +372,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -383,11 +383,11 @@ class NamespaceApi(object):
 
         Creates a directory with a specified path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_directory(directory_path, x_isi_ifs_target_type, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_directory(directory_path, x_isi_ifs_target_type, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str x_isi_ifs_target_type: Specifies the resource type. (required)
         :param str x_isi_ifs_access_control: Specifies a pre-defined ACL value or POSIX mode with a string in octal string format.
@@ -399,7 +399,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_directory_with_http_info(directory_path, x_isi_ifs_target_type, **kwargs)  # noqa: E501
         else:
             (data) = self.create_directory_with_http_info(directory_path, x_isi_ifs_target_type, **kwargs)  # noqa: E501
@@ -410,11 +410,11 @@ class NamespaceApi(object):
 
         Creates a directory with a specified path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_directory_with_http_info(directory_path, x_isi_ifs_target_type, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_directory_with_http_info(directory_path, x_isi_ifs_target_type, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str x_isi_ifs_target_type: Specifies the resource type. (required)
         :param str x_isi_ifs_access_control: Specifies a pre-defined ACL value or POSIX mode with a string in octal string format.
@@ -427,7 +427,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_path', 'x_isi_ifs_target_type', 'x_isi_ifs_access_control', 'x_isi_ifs_node_pool_name', 'recursive', 'overwrite']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -495,7 +495,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -506,11 +506,11 @@ class NamespaceApi(object):
 
         Creates a file object with a given path. Note that file streaming is not supported.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_file(file_path, x_isi_ifs_target_type, file_contents, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_file(file_path, x_isi_ifs_target_type, file_contents, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str x_isi_ifs_target_type: Specifies the resource type. (required)
         :param str file_contents: The contents of the file object. (required)
@@ -523,7 +523,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_file_with_http_info(file_path, x_isi_ifs_target_type, file_contents, **kwargs)  # noqa: E501
         else:
             (data) = self.create_file_with_http_info(file_path, x_isi_ifs_target_type, file_contents, **kwargs)  # noqa: E501
@@ -534,11 +534,11 @@ class NamespaceApi(object):
 
         Creates a file object with a given path. Note that file streaming is not supported.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_file_with_http_info(file_path, x_isi_ifs_target_type, file_contents, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_file_with_http_info(file_path, x_isi_ifs_target_type, file_contents, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str x_isi_ifs_target_type: Specifies the resource type. (required)
         :param str file_contents: The contents of the file object. (required)
@@ -552,7 +552,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_path', 'x_isi_ifs_target_type', 'file_contents', 'x_isi_ifs_access_control', 'content_encoding', 'content_type', 'overwrite']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -626,7 +626,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -637,18 +637,18 @@ class NamespaceApi(object):
 
         Deletes a namespace access point. Only root users can delete namespace access points.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_access_point(access_point_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_access_point(access_point_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str access_point_name: Access point name. (required)
         :return: Empty
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_access_point_with_http_info(access_point_name, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_access_point_with_http_info(access_point_name, **kwargs)  # noqa: E501
@@ -659,11 +659,11 @@ class NamespaceApi(object):
 
         Deletes a namespace access point. Only root users can delete namespace access points.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_access_point_with_http_info(access_point_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_access_point_with_http_info(access_point_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str access_point_name: Access point name. (required)
         :return: Empty
                  If the method is called asynchronously,
@@ -671,7 +671,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['access_point_name']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -725,7 +725,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -736,11 +736,11 @@ class NamespaceApi(object):
 
         Deletes the directory at the specified path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_directory(directory_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_directory(directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param bool recursive: Deletes directories recursively, when set to true.
         :return: Empty
@@ -748,7 +748,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_directory_with_http_info(directory_path, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_directory_with_http_info(directory_path, **kwargs)  # noqa: E501
@@ -759,11 +759,11 @@ class NamespaceApi(object):
 
         Deletes the directory at the specified path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_directory_with_http_info(directory_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_directory_with_http_info(directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param bool recursive: Deletes directories recursively, when set to true.
         :return: Empty
@@ -772,7 +772,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_path', 'recursive']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -828,7 +828,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -839,18 +839,18 @@ class NamespaceApi(object):
 
         Deletes the specified file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_file(file_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_file(file_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :return: Empty
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_file_with_http_info(file_path, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_file_with_http_info(file_path, **kwargs)  # noqa: E501
@@ -861,11 +861,11 @@ class NamespaceApi(object):
 
         Deletes the specified file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_file_with_http_info(file_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_file_with_http_info(file_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :return: Empty
                  If the method is called asynchronously,
@@ -873,7 +873,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_path']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -927,7 +927,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -938,11 +938,11 @@ class NamespaceApi(object):
 
         Retrieves the access control list for a namespace object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_acl(namespace_path, acl, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_acl(namespace_path, acl, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str namespace_path: Namespace path relative to /. (required)
         :param bool acl: Show access control lists. (required)
         :param bool nsaccess: Indicates that the operation is on the access point instead of the store path.
@@ -951,7 +951,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_acl_with_http_info(namespace_path, acl, **kwargs)  # noqa: E501
         else:
             (data) = self.get_acl_with_http_info(namespace_path, acl, **kwargs)  # noqa: E501
@@ -962,11 +962,11 @@ class NamespaceApi(object):
 
         Retrieves the access control list for a namespace object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_acl_with_http_info(namespace_path, acl, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_acl_with_http_info(namespace_path, acl, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str namespace_path: Namespace path relative to /. (required)
         :param bool acl: Show access control lists. (required)
         :param bool nsaccess: Indicates that the operation is on the access point instead of the store path.
@@ -976,7 +976,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['namespace_path', 'acl', 'nsaccess']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1038,7 +1038,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='NamespaceAcl',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1049,11 +1049,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified directory without transferring the contents of the directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_directory_attributes(directory_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_directory_attributes(directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str if_modified_since: Returns only files that were modified since the specified time. If no files were modified since this time, a 304 message is returned.
         :param str if_unmodified_since: Returns only files that were not modified since the specified time. If there are no unmodified files since this time, a 412 message is returned to indicate that the precondition failed.
@@ -1062,7 +1062,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_directory_attributes_with_http_info(directory_path, **kwargs)  # noqa: E501
         else:
             (data) = self.get_directory_attributes_with_http_info(directory_path, **kwargs)  # noqa: E501
@@ -1073,11 +1073,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified directory without transferring the contents of the directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_directory_attributes_with_http_info(directory_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_directory_attributes_with_http_info(directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str if_modified_since: Returns only files that were modified since the specified time. If no files were modified since this time, a 304 message is returned.
         :param str if_unmodified_since: Returns only files that were not modified since the specified time. If there are no unmodified files since this time, a 412 message is returned to indicate that the precondition failed.
@@ -1087,7 +1087,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_path', 'if_modified_since', 'if_unmodified_since']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1145,7 +1145,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1156,11 +1156,11 @@ class NamespaceApi(object):
 
         Retrieves a list of files and subdirectories from a directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_directory_contents(directory_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_directory_contents(directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str detail: Specifies which object attributes are displayed.
         :param int limit: Specifies the maximum number of objects to send to the client.
@@ -1174,7 +1174,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_directory_contents_with_http_info(directory_path, **kwargs)  # noqa: E501
         else:
             (data) = self.get_directory_contents_with_http_info(directory_path, **kwargs)  # noqa: E501
@@ -1185,11 +1185,11 @@ class NamespaceApi(object):
 
         Retrieves a list of files and subdirectories from a directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_directory_contents_with_http_info(directory_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_directory_contents_with_http_info(directory_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str detail: Specifies which object attributes are displayed.
         :param int limit: Specifies the maximum number of objects to send to the client.
@@ -1204,7 +1204,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_path', 'detail', 'limit', 'resume', 'sort', 'dir', 'type', 'hidden']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1272,7 +1272,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='NamespaceObjects',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1283,11 +1283,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified directory with the metadata query argument.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_directory_metadata(directory_metadata_path, metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_directory_metadata(directory_metadata_path, metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_metadata_path: Directory path relative to /. (required)
         :param bool metadata: Show directory metadata. (required)
         :return: NamespaceMetadataList
@@ -1295,7 +1295,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_directory_metadata_with_http_info(directory_metadata_path, metadata, **kwargs)  # noqa: E501
         else:
             (data) = self.get_directory_metadata_with_http_info(directory_metadata_path, metadata, **kwargs)  # noqa: E501
@@ -1306,11 +1306,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified directory with the metadata query argument.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_directory_metadata_with_http_info(directory_metadata_path, metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_directory_metadata_with_http_info(directory_metadata_path, metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_metadata_path: Directory path relative to /. (required)
         :param bool metadata: Show directory metadata. (required)
         :return: NamespaceMetadataList
@@ -1319,7 +1319,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_metadata_path', 'metadata']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1379,7 +1379,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='NamespaceMetadataList',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1390,11 +1390,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_file_attributes(file_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_file_attributes(file_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str if_modified_since: Returns only files that were modified since the specified time. If no files were modified since this time, a 304 message is returned.
         :param str if_unmodified_since: Returns only files that were not modified since the specified time. If there are no unmodified files since this time, a 412 message is returned to indicate that the precondition failed.
@@ -1403,7 +1403,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_file_attributes_with_http_info(file_path, **kwargs)  # noqa: E501
         else:
             (data) = self.get_file_attributes_with_http_info(file_path, **kwargs)  # noqa: E501
@@ -1414,11 +1414,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_file_attributes_with_http_info(file_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_file_attributes_with_http_info(file_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str if_modified_since: Returns only files that were modified since the specified time. If no files were modified since this time, a 304 message is returned.
         :param str if_unmodified_since: Returns only files that were not modified since the specified time. If there are no unmodified files since this time, a 412 message is returned to indicate that the precondition failed.
@@ -1428,7 +1428,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_path', 'if_modified_since', 'if_unmodified_since']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1486,7 +1486,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1497,11 +1497,11 @@ class NamespaceApi(object):
 
         Retrieves the contents of a file from a specified path. Note that file streaming is not supported.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_file_contents(file_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_file_contents(file_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str range: Returns the specified range bytes of an object. 
         :param str if_modified_since: Returns only files that were modified since the specified time. If no files were modified since this time, a 304 message is returned.
@@ -1511,7 +1511,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_file_contents_with_http_info(file_path, **kwargs)  # noqa: E501
         else:
             (data) = self.get_file_contents_with_http_info(file_path, **kwargs)  # noqa: E501
@@ -1522,11 +1522,11 @@ class NamespaceApi(object):
 
         Retrieves the contents of a file from a specified path. Note that file streaming is not supported.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_file_contents_with_http_info(file_path, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_file_contents_with_http_info(file_path, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str range: Returns the specified range bytes of an object. 
         :param str if_modified_since: Returns only files that were modified since the specified time. If no files were modified since this time, a 304 message is returned.
@@ -1537,7 +1537,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_path', 'range', 'if_modified_since', 'if_unmodified_since']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1597,7 +1597,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1608,11 +1608,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified file with the metadata query argument.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_file_metadata(file_metadata_path, metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_file_metadata(file_metadata_path, metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_metadata_path: File path relative to /. (required)
         :param bool metadata: Show file metadata. (required)
         :return: NamespaceMetadataList
@@ -1620,7 +1620,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_file_metadata_with_http_info(file_metadata_path, metadata, **kwargs)  # noqa: E501
         else:
             (data) = self.get_file_metadata_with_http_info(file_metadata_path, metadata, **kwargs)  # noqa: E501
@@ -1631,11 +1631,11 @@ class NamespaceApi(object):
 
         Retrieves the attribute information for a specified file with the metadata query argument.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_file_metadata_with_http_info(file_metadata_path, metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_file_metadata_with_http_info(file_metadata_path, metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_metadata_path: File path relative to /. (required)
         :param bool metadata: Show file metadata. (required)
         :return: NamespaceMetadataList
@@ -1644,7 +1644,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_metadata_path', 'metadata']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1704,7 +1704,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='NamespaceMetadataList',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1715,11 +1715,11 @@ class NamespaceApi(object):
 
         Retrieves the WORM retention date and committed state of the file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_worm_properties(worm_file_path, worm, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_worm_properties(worm_file_path, worm, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str worm_file_path: Write once read many file path relative to /. (required)
         :param bool worm: View WORM properties (required)
         :return: WormProperties
@@ -1727,7 +1727,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_worm_properties_with_http_info(worm_file_path, worm, **kwargs)  # noqa: E501
         else:
             (data) = self.get_worm_properties_with_http_info(worm_file_path, worm, **kwargs)  # noqa: E501
@@ -1738,11 +1738,11 @@ class NamespaceApi(object):
 
         Retrieves the WORM retention date and committed state of the file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_worm_properties_with_http_info(worm_file_path, worm, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_worm_properties_with_http_info(worm_file_path, worm, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str worm_file_path: Write once read many file path relative to /. (required)
         :param bool worm: View WORM properties (required)
         :return: WormProperties
@@ -1751,7 +1751,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['worm_file_path', 'worm']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1811,7 +1811,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='WormProperties',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1822,18 +1822,18 @@ class NamespaceApi(object):
 
         Retrieves the namespace access points available for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.list_access_points(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_access_points(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param bool versions: Protocol versions that are supported for the current namespace access server.
         :return: NamespaceAccessPoints
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.list_access_points_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.list_access_points_with_http_info(**kwargs)  # noqa: E501
@@ -1844,11 +1844,11 @@ class NamespaceApi(object):
 
         Retrieves the namespace access points available for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.list_access_points_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_access_points_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param bool versions: Protocol versions that are supported for the current namespace access server.
         :return: NamespaceAccessPoints
                  If the method is called asynchronously,
@@ -1856,7 +1856,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['versions']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1906,7 +1906,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='NamespaceAccessPoints',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1917,11 +1917,11 @@ class NamespaceApi(object):
 
         Moves a directory from an existing source to a new destination path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.move_directory(directory_path, x_isi_ifs_set_location, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.move_directory(directory_path, x_isi_ifs_set_location, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str x_isi_ifs_set_location: Specifies the full path for the destination directory. (required)
         :return: Empty
@@ -1929,7 +1929,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.move_directory_with_http_info(directory_path, x_isi_ifs_set_location, **kwargs)  # noqa: E501
         else:
             (data) = self.move_directory_with_http_info(directory_path, x_isi_ifs_set_location, **kwargs)  # noqa: E501
@@ -1940,11 +1940,11 @@ class NamespaceApi(object):
 
         Moves a directory from an existing source to a new destination path.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.move_directory_with_http_info(directory_path, x_isi_ifs_set_location, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.move_directory_with_http_info(directory_path, x_isi_ifs_set_location, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_path: Directory path relative to /. (required)
         :param str x_isi_ifs_set_location: Specifies the full path for the destination directory. (required)
         :return: Empty
@@ -1953,7 +1953,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_path', 'x_isi_ifs_set_location']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2013,7 +2013,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2024,11 +2024,11 @@ class NamespaceApi(object):
 
         Moves a file to a destination path that does not yet exist.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.move_file(file_path, x_isi_ifs_set_location, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.move_file(file_path, x_isi_ifs_set_location, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str x_isi_ifs_set_location: Specifies the full path for the destination file.  (required)
         :return: Empty
@@ -2036,7 +2036,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.move_file_with_http_info(file_path, x_isi_ifs_set_location, **kwargs)  # noqa: E501
         else:
             (data) = self.move_file_with_http_info(file_path, x_isi_ifs_set_location, **kwargs)  # noqa: E501
@@ -2047,11 +2047,11 @@ class NamespaceApi(object):
 
         Moves a file to a destination path that does not yet exist.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.move_file_with_http_info(file_path, x_isi_ifs_set_location, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.move_file_with_http_info(file_path, x_isi_ifs_set_location, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_path: File path relative to /. (required)
         :param str x_isi_ifs_set_location: Specifies the full path for the destination file.  (required)
         :return: Empty
@@ -2060,7 +2060,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_path', 'x_isi_ifs_set_location']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2120,7 +2120,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2131,11 +2131,11 @@ class NamespaceApi(object):
 
         Query objects by system-defined and user-defined attributes in a directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.query_directory(query_path, query, directory_query, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.query_directory(query_path, query, directory_query, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str query_path: Directory path relative to /. (required)
         :param bool query: Enable directory query. (required)
         :param DirectoryQuery directory_query: Directory query parameters model. (required)
@@ -2152,7 +2152,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.query_directory_with_http_info(query_path, query, directory_query, **kwargs)  # noqa: E501
         else:
             (data) = self.query_directory_with_http_info(query_path, query, directory_query, **kwargs)  # noqa: E501
@@ -2163,11 +2163,11 @@ class NamespaceApi(object):
 
         Query objects by system-defined and user-defined attributes in a directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.query_directory_with_http_info(query_path, query, directory_query, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.query_directory_with_http_info(query_path, query, directory_query, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str query_path: Directory path relative to /. (required)
         :param bool query: Enable directory query. (required)
         :param DirectoryQuery directory_query: Directory query parameters model. (required)
@@ -2185,7 +2185,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['query_path', 'query', 'directory_query', 'limit', 'detail', 'resume', 'sort', 'dir', 'type', 'hidden', 'max_depth']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2267,7 +2267,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='NamespaceObjects',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2278,11 +2278,11 @@ class NamespaceApi(object):
 
         Sets the access control list for a namespace.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_acl(namespace_path, acl, namespace_acl, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_acl(namespace_path, acl, namespace_acl, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str namespace_path: Namespace path relative to /. (required)
         :param bool acl: Update access control lists. (required)
         :param NamespaceAcl namespace_acl: Namespace ACL parameters model. (required)
@@ -2292,7 +2292,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.set_acl_with_http_info(namespace_path, acl, namespace_acl, **kwargs)  # noqa: E501
         else:
             (data) = self.set_acl_with_http_info(namespace_path, acl, namespace_acl, **kwargs)  # noqa: E501
@@ -2303,11 +2303,11 @@ class NamespaceApi(object):
 
         Sets the access control list for a namespace.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_acl_with_http_info(namespace_path, acl, namespace_acl, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_acl_with_http_info(namespace_path, acl, namespace_acl, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str namespace_path: Namespace path relative to /. (required)
         :param bool acl: Update access control lists. (required)
         :param NamespaceAcl namespace_acl: Namespace ACL parameters model. (required)
@@ -2318,7 +2318,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['namespace_path', 'acl', 'namespace_acl', 'nsaccess']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2386,7 +2386,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2397,11 +2397,11 @@ class NamespaceApi(object):
 
         Sets attributes on a specified directory with the metadata query argument.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_directory_metadata(directory_metadata_path, metadata, directory_metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_directory_metadata(directory_metadata_path, metadata, directory_metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_metadata_path: Directory path relative to /. (required)
         :param bool metadata: Set directory metadata. (required)
         :param NamespaceMetadata directory_metadata: Directory metadata parameters model. (required)
@@ -2410,7 +2410,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.set_directory_metadata_with_http_info(directory_metadata_path, metadata, directory_metadata, **kwargs)  # noqa: E501
         else:
             (data) = self.set_directory_metadata_with_http_info(directory_metadata_path, metadata, directory_metadata, **kwargs)  # noqa: E501
@@ -2421,11 +2421,11 @@ class NamespaceApi(object):
 
         Sets attributes on a specified directory with the metadata query argument.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_directory_metadata_with_http_info(directory_metadata_path, metadata, directory_metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_directory_metadata_with_http_info(directory_metadata_path, metadata, directory_metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str directory_metadata_path: Directory path relative to /. (required)
         :param bool metadata: Set directory metadata. (required)
         :param NamespaceMetadata directory_metadata: Directory metadata parameters model. (required)
@@ -2435,7 +2435,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['directory_metadata_path', 'metadata', 'directory_metadata']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2501,7 +2501,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2512,11 +2512,11 @@ class NamespaceApi(object):
 
         Sets attributes on a specified file with the metadata query argument through the JSON body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_file_metadata(file_metadata_path, metadata, file_metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_file_metadata(file_metadata_path, metadata, file_metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_metadata_path: File path relative to /. (required)
         :param bool metadata: Set file metadata. (required)
         :param NamespaceMetadata file_metadata: File metadata parameters model. (required)
@@ -2525,7 +2525,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.set_file_metadata_with_http_info(file_metadata_path, metadata, file_metadata, **kwargs)  # noqa: E501
         else:
             (data) = self.set_file_metadata_with_http_info(file_metadata_path, metadata, file_metadata, **kwargs)  # noqa: E501
@@ -2536,11 +2536,11 @@ class NamespaceApi(object):
 
         Sets attributes on a specified file with the metadata query argument through the JSON body.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_file_metadata_with_http_info(file_metadata_path, metadata, file_metadata, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_file_metadata_with_http_info(file_metadata_path, metadata, file_metadata, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_metadata_path: File path relative to /. (required)
         :param bool metadata: Set file metadata. (required)
         :param NamespaceMetadata file_metadata: File metadata parameters model. (required)
@@ -2550,7 +2550,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['file_metadata_path', 'metadata', 'file_metadata']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2616,7 +2616,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2627,11 +2627,11 @@ class NamespaceApi(object):
 
         Sets the retention period and commits a file in a SmartLock directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_worm_properties(worm_file_path, worm, worm_properties, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_worm_properties(worm_file_path, worm, worm_properties, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str worm_file_path: Write once read many file path relative to /. (required)
         :param bool worm: View WORM properties (required)
         :param WormCreateParams worm_properties: WORM parameters model. (required)
@@ -2640,7 +2640,7 @@ class NamespaceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.set_worm_properties_with_http_info(worm_file_path, worm, worm_properties, **kwargs)  # noqa: E501
         else:
             (data) = self.set_worm_properties_with_http_info(worm_file_path, worm, worm_properties, **kwargs)  # noqa: E501
@@ -2651,11 +2651,11 @@ class NamespaceApi(object):
 
         Sets the retention period and commits a file in a SmartLock directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.set_worm_properties_with_http_info(worm_file_path, worm, worm_properties, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.set_worm_properties_with_http_info(worm_file_path, worm, worm_properties, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str worm_file_path: Write once read many file path relative to /. (required)
         :param bool worm: View WORM properties (required)
         :param WormCreateParams worm_properties: WORM parameters model. (required)
@@ -2665,7 +2665,7 @@ class NamespaceApi(object):
         """
 
         all_params = ['worm_file_path', 'worm', 'worm_properties']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2731,7 +2731,7 @@ class NamespaceApi(object):
             files=local_var_files,
             response_type='Empty',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

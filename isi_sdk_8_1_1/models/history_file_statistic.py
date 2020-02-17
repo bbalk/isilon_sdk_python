@@ -208,6 +208,9 @@ class HistoryFileStatistic(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(HistoryFileStatistic, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

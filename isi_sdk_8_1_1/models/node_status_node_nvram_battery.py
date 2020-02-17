@@ -175,6 +175,9 @@ class NodeStatusNodeNvramBattery(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NodeStatusNodeNvramBattery, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

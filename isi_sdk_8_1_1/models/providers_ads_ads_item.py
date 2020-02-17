@@ -1433,6 +1433,9 @@ class ProvidersAdsAdsItem(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ProvidersAdsAdsItem, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

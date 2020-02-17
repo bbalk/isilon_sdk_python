@@ -269,6 +269,9 @@ class WormDomain(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(WormDomain, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

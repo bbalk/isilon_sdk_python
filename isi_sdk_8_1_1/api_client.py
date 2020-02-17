@@ -18,11 +18,10 @@ from multiprocessing.pool import ThreadPool
 import os
 import re
 import tempfile
-import time
 
 # python 2 and python 3 compatibility library
 import six
-from six.moves.urllib.parse import quote, quote_plus
+from six.moves.urllib.parse import quote
 
 from isi_sdk_8_1_1.configuration import Configuration
 import isi_sdk_8_1_1.models
@@ -67,27 +66,26 @@ class ApiClient(object):
             configuration = Configuration()
         self.configuration = configuration
 
-        self.pool = ThreadPool()
+        # Use the pool property to lazily initialize the ThreadPool.
+        self._pool = None
         self.rest_client = rest.RESTClientObject(configuration)
         self.default_headers = {}
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Swagger-Codegen/0.2.8/python'
-        # This is used for detecting for the special case of a path parameter
-        # that is tagged with x-isi-url-encode-path-param (more details in the
-        # __call_api function).
-        self.quote_plus_tag = "__x-isi-url-encode-path-param__"
-        self.quote_plus_tag_len = len(self.quote_plus_tag)
-
-        self.session_expiration = 0
-        self.inactive_expiration = 0
-        self.x_csrf_token = None
+        self.user_agent = 'Swagger-Codegen/0.2.9/python'
 
     def __del__(self):
-        self.pool.close()
-        self.pool.join()
+        if self._pool is not None:
+            self._pool.close()
+            self._pool.join()
+
+    @property
+    def pool(self):
+        if self._pool is None:
+            self._pool = ThreadPool()
+        return self._pool
 
     @property
     def user_agent(self):
@@ -126,23 +124,11 @@ class ApiClient(object):
             path_params = self.parameters_to_tuples(path_params,
                                                     collection_formats)
             for k, v in path_params:
-                v_str = str(v)
-                # Check for the special case of the
-                # x-isi-url-encode-path-param, which indicates that the
-                # parameter should be encoded with quote_plus in order
-                # to encode the '/' character.
-                # check if the first part of v_str matches the tag
-                if v_str[:self.quote_plus_tag_len] == self.quote_plus_tag:
-                    # remove "__x-isi-url-encode-path-param__"
-                    v_str = v_str[self.quote_plus_tag_len:]
-                    # then url-encode with quote_plus
-                    replacement = quote_plus(v_str)
-                else:
-                    replacement = quote(v_str, safe=config.safe_chars_for_path_param)
-
                 # specified safe chars, encode everything
                 resource_path = resource_path.replace(
-                    '{%s}' % k, replacement)
+                    '{%s}' % k,
+                    quote(str(v), safe=config.safe_chars_for_path_param)
+                )
 
         # query parameters
         if query_params:
@@ -158,9 +144,7 @@ class ApiClient(object):
                                                     collection_formats)
 
         # auth setting
-        if not self.configuration.host.startswith('papi://'):
-            self.update_params_for_auth(
-                header_params, query_params, auth_settings)
+        self.update_params_for_auth(header_params, query_params, auth_settings)
 
         # body
         if body:
@@ -269,12 +253,12 @@ class ApiClient(object):
 
         if type(klass) == str:
             if klass.startswith('list['):
-                sub_kls = re.match('list\[(.*)\]', klass).group(1)
+                sub_kls = re.match(r'list\[(.*)\]', klass).group(1)
                 return [self.__deserialize(sub_data, sub_kls)
                         for sub_data in data]
 
             if klass.startswith('dict('):
-                sub_kls = re.match('dict\(([^,]*), (.*)\)', klass).group(2)
+                sub_kls = re.match(r'dict\(([^,]*), (.*)\)', klass).group(2)
                 return {k: self.__deserialize(v, sub_kls)
                         for k, v in six.iteritems(data)}
 
@@ -298,12 +282,12 @@ class ApiClient(object):
     def call_api(self, resource_path, method,
                  path_params=None, query_params=None, header_params=None,
                  body=None, post_params=None, files=None,
-                 response_type=None, auth_settings=None, async=None,
+                 response_type=None, auth_settings=None, async_req=None,
                  _return_http_data_only=None, collection_formats=None,
                  _preload_content=True, _request_timeout=None):
         """Makes the HTTP request (synchronous) and returns deserialized data.
 
-        To make an async request, set the async parameter.
+        To make an async request, set the async_req parameter.
 
         :param resource_path: Path to method endpoint.
         :param method: Method to call.
@@ -318,7 +302,7 @@ class ApiClient(object):
         :param response: Response data type.
         :param files dict: key -> filename, value -> filepath,
             for `multipart/form-data`.
-        :param async bool: execute request asynchronously
+        :param async_req bool: execute request asynchronously
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param collection_formats: dict of collection formats for path, query,
@@ -331,13 +315,13 @@ class ApiClient(object):
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
         :return:
-            If async parameter is True,
+            If async_req parameter is True,
             the request will be called asynchronously.
             The method will return the request thread.
-            If parameter async is False or missing,
+            If parameter async_req is False or missing,
             then the method will return the response directly.
         """
-        if not async:
+        if not async_req:
             return self.__call_api(resource_path, method,
                                    path_params, query_params, header_params,
                                    body, post_params, files,
@@ -427,7 +411,7 @@ class ApiClient(object):
         if collection_formats is None:
             collection_formats = {}
         for k, v in six.iteritems(params) if isinstance(params, dict) else params:  # noqa: E501
-            if k in collection_formats and not isinstance(v, self.PRIMITIVE_TYPES):
+            if k in collection_formats:
                 collection_format = collection_formats[k]
                 if collection_format == 'multi':
                     new_params.extend((k, value) for value in v)
@@ -530,40 +514,6 @@ class ApiClient(object):
                         'Authentication token must be in `query` or `header`'
                     )
 
-        # check if PAPI session has expired
-        now = time.time()
-        if now >= self.session_expiration or now >= self.inactive_expiration:
-            url = self.configuration.host + '/session/1/session'
-            body = {
-                'username': self.configuration.username,
-                'password': self.configuration.password,
-                'services': ['platform', 'namespace']
-            }
-            response_data = self.rest_client.POST(
-                url, headers=headers, body=body)
-
-            if response_data.status == 201:
-                cookies = response_data.getheaders()['Set-Cookie']
-                self.cookie = cookies.split(';')[0]
-                timeout = json.loads(response_data.data)['timeout_absolute']
-                self.session_expiration = now + timeout
-
-                try:
-                    # extract X-CSRF token from response cookies
-                    isicsrf = cookies[cookies.find('isicsrf'):]
-                    self.x_csrf_token = isicsrf.split(';', 1)[0].split('=')[1]
-                except IndexError:
-                    # this is not an anti-CSRF version of PAPI
-                    pass
-
-        # 15 seconds is the default keep alive timeout
-        self.inactive_expiration = now + 15
-
-        headers['Cookie'] = self.cookie
-        if self.x_csrf_token:
-            headers['Origin'] = self.configuration.host
-            headers['X-CSRF-Token'] = self.x_csrf_token
-
     def __deserialize_file(self, response):
         """Deserializes body to file
 
@@ -599,7 +549,7 @@ class ApiClient(object):
         try:
             return klass(data)
         except UnicodeEncodeError:
-            return six.u(data)
+            return six.text_type(data)
         except TypeError:
             return data
 
@@ -649,6 +599,9 @@ class ApiClient(object):
                 )
             )
 
+    def __hasattr(self, object, name):
+        return name in object.__class__.__dict__
+
     def __deserialize_model(self, data, klass):
         """Deserializes list or dict to model.
 
@@ -657,8 +610,8 @@ class ApiClient(object):
         :return: model object.
         """
 
-        if not klass.swagger_types and not hasattr(klass,
-                                                   'get_real_child_model'):
+        if (not klass.swagger_types and
+                not self.__hasattr(klass, 'get_real_child_model')):
             return data
 
         kwargs = {}
@@ -672,7 +625,13 @@ class ApiClient(object):
 
         instance = klass(**kwargs)
 
-        if hasattr(instance, 'get_real_child_model'):
+        if (isinstance(instance, dict) and
+                klass.swagger_types is not None and
+                isinstance(data, dict)):
+            for key, value in data.items():
+                if key not in klass.swagger_types:
+                    instance[key] = value
+        if self.__hasattr(instance, 'get_real_child_model'):
             klass_name = instance.get_real_child_model(data)
             if klass_name:
                 instance = self.__deserialize(data, klass_name)

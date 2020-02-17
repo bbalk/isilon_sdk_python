@@ -155,6 +155,9 @@ class JobJobDomainmarkParams(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(JobJobDomainmarkParams, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

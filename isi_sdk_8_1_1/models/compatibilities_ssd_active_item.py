@@ -176,6 +176,9 @@ class CompatibilitiesSsdActiveItem(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CompatibilitiesSsdActiveItem, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

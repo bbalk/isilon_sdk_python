@@ -141,6 +141,9 @@ class PoolsPoolInterfacesInterfaceOwner(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(PoolsPoolInterfacesInterfaceOwner, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

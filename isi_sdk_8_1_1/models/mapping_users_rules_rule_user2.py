@@ -123,6 +123,9 @@ class MappingUsersRulesRuleUser2(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(MappingUsersRulesRuleUser2, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

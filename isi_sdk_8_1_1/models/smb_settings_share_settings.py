@@ -704,8 +704,8 @@ class SmbSettingsShareSettings(object):
             raise ValueError("Invalid value for `impersonate_user`, length must be less than or equal to `511`")  # noqa: E501
         if impersonate_user is not None and len(impersonate_user) < 0:
             raise ValueError("Invalid value for `impersonate_user`, length must be greater than or equal to `0`")  # noqa: E501
-        if impersonate_user is not None and not re.search('^$|.', impersonate_user):  # noqa: E501
-            raise ValueError("Invalid value for `impersonate_user`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
+        if impersonate_user is not None and not re.search(r'^$|.', impersonate_user):  # noqa: E501
+            raise ValueError(r"Invalid value for `impersonate_user`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
 
         self._impersonate_user = impersonate_user
 
@@ -921,8 +921,8 @@ class SmbSettingsShareSettings(object):
             raise ValueError("Invalid value for `zone`, length must be less than or equal to `511`")  # noqa: E501
         if zone is not None and len(zone) < 1:
             raise ValueError("Invalid value for `zone`, length must be greater than or equal to `1`")  # noqa: E501
-        if zone is not None and not re.search('^$|.', zone):  # noqa: E501
-            raise ValueError("Invalid value for `zone`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
+        if zone is not None and not re.search(r'^$|.', zone):  # noqa: E501
+            raise ValueError(r"Invalid value for `zone`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
 
         self._zone = zone
 
@@ -947,6 +947,9 @@ class SmbSettingsShareSettings(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(SmbSettingsShareSettings, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

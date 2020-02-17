@@ -203,6 +203,9 @@ class CloudPool(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CloudPool, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

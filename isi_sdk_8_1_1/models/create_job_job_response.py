@@ -94,6 +94,9 @@ class CreateJobJobResponse(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CreateJobJobResponse, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -363,6 +363,9 @@ class EventAlertConditionsAlertCondition(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(EventAlertConditionsAlertCondition, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

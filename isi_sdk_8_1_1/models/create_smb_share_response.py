@@ -72,8 +72,8 @@ class CreateSmbShareResponse(object):
             raise ValueError("Invalid value for `id`, length must be less than or equal to `255`")  # noqa: E501
         if id is not None and len(id) < 1:
             raise ValueError("Invalid value for `id`, length must be greater than or equal to `1`")  # noqa: E501
-        if id is not None and not re.search('^$|.', id):  # noqa: E501
-            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
+        if id is not None and not re.search(r'^$|.', id):  # noqa: E501
+            raise ValueError(r"Invalid value for `id`, must be a follow pattern or equal to `/^$|./`")  # noqa: E501
 
         self._id = id
 
@@ -98,6 +98,9 @@ class CreateSmbShareResponse(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CreateSmbShareResponse, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

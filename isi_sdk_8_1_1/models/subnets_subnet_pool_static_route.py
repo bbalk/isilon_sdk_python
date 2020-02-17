@@ -150,6 +150,9 @@ class SubnetsSubnetPoolStaticRoute(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(SubnetsSubnetPoolStaticRoute, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -411,6 +411,9 @@ class EventChannelParameters(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(EventChannelParameters, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

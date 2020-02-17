@@ -183,6 +183,9 @@ class NodeDrivesPurposelistError(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NodeDrivesPurposelistError, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

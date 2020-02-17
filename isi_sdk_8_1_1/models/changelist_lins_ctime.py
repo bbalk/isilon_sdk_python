@@ -120,6 +120,9 @@ class ChangelistLinsCtime(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ChangelistLinsCtime, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

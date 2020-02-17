@@ -187,6 +187,9 @@ class PoolsPoolRuleCreateParams(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(PoolsPoolRuleCreateParams, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

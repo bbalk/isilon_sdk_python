@@ -119,6 +119,9 @@ class NodeDrivesNodeDriveFirmware(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NodeDrivesNodeDriveFirmware, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

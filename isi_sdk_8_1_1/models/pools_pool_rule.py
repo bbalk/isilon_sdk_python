@@ -179,6 +179,9 @@ class PoolsPoolRule(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(PoolsPoolRule, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

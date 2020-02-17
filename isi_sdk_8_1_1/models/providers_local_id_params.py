@@ -538,6 +538,9 @@ class ProvidersLocalIdParams(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ProvidersLocalIdParams, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 
